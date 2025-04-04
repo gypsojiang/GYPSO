@@ -1,157 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gypso - Creative Artist</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gypso - Creative Artist</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
-    <div class="landing-page">
-        <div class="illustration-container">
-            <div class="girl-illustration"></div>
-        </div>
-        <div class="language-selector">
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="es">ES</button>
-            <button class="lang-btn" data-lang="zh">中文</button>
-        </div>
+  <div class="landing-page">
+    <div class="illustration-container">
+      <div class="girl-illustration" id="mainIllustration"></div>
     </div>
-
-    <div class="main-content hidden">
-        <nav class="main-nav">
-            <div class="nav-logo">Gypso</div>
-            <ul class="nav-links">
-                <li><a href="#home" data-translate="home">Home</a></li>
-                <li><a href="#projects" data-translate="projects">Projects</a></li>
-                <li><a href="#about" data-translate="about">About</a></li>
-                <li><a href="#contact" data-translate="contact">Contact</a></li>
-            </ul>
-        </nav>
-
-        <main>
-            <section id="home" class="hero-section">
-                <div class="portfolio-grid">
-                    <!-- Portfolio items will be added dynamically -->
-                </div>
-            </section>
-
-            <section id="projects" class="projects-section">
-                <h2 data-translate="projects">Projects</h2>
-                <div class="project-categories">
-                    <div class="category" onclick="window.location.href='directing.html'">
-                        <h3>Directing</h3>
-                        <p data-translate="directing">导演作品</p>
-                    </div>
-                    <div class="category" onclick="window.location.href='photography.html'">
-                        <h3>Photography</h3>
-                        <p data-translate="photography">摄影作品</p>
-                    </div>
-                    <div class="category" onclick="window.location.href='animation.html'">
-                        <h3>Animation</h3>
-                        <p data-translate="animation">动画作品</p>
-                    </div>
-                    <div class="category" onclick="window.location.href='editing.html'">
-                        <h3>Editing</h3>
-                        <p data-translate="editing">剪辑作品</p>
-                    </div>
-                    <div class="category" onclick="window.location.href='stories.html'">
-                        <h3>Stories</h3>
-                        <p data-translate="stories">个人故事</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="about" class="about-section">
-                <h2 data-translate="about">About Me</h2>
-                <div class="artist-statement" data-translate="aboutContent">
-                    <!-- Content will be added dynamically based on language -->
-                </div>
-            </section>
-
-            <section id="contact" class="contact-section">
-                <h2 data-translate="contact">Contact</h2>
-                <div class="contact-container">
-                    <form class="contact-form">
-                        <input type="text" data-translate="name" placeholder="Name" required>
-                        <input type="email" data-translate="email" placeholder="Email" required>
-                        <textarea data-translate="message" placeholder="Message" required></textarea>
-                        <button type="submit" data-translate="send">Send Message</button>
-                    </form>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/gypsojiang" class="social-link instagram" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                            Instagram
-                        </a>
-                        <a href="https://www.linkedin.com/in/gypsojiang" class="social-link linkedin" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                            LinkedIn
-                        </a>
-                    </div>
-                    <div class="email-contact">
-                        <a href="mailto:gypsojiang@gmail.com" class="email-link">
-                            <i class="fas fa-envelope"></i>
-                            <span>gypsojiang@gmail.com</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
+    <div class="language-selector">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
     </div>
+  </div>
 
-    <script src="js/main.js"></script>
+  <div class="main-content hidden">
+    <nav class="main-nav">
+      <div class="nav-logo">Gypso</div>
+      <ul class="nav-links">
+        <li><a href="#home" data-translate="home">Home</a></li>
+        <li><a href="#projects" data-translate="projects">Projects</a></li>
+        <li><a href="#about" data-translate="about">About</a></li>
+        <li><a href="#contact" data-translate="contact">Contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- 加载作品列表 -->
-    <script>
-        function loadWorks() {
-            const works = JSON.parse(localStorage.getItem('works') || '[]');
-            console.log('Loading works in index.html:', works);
-            
-            const worksGrid = document.querySelector('.works-grid');
-            if (!worksGrid) {
-                console.error('Works grid element not found in index.html!');
-                return;
-            }
+    <main>
+      <section id="home" class="hero-section">
+        <div class="portfolio-grid works-grid">
+          <!-- Cargado dinámicamente por JS -->
+        </div>
+      </section>
 
-            if (works.length === 0) {
-                worksGrid.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">暂无作品</p>';
-                return;
-            }
+      <section id="projects" class="projects-section">
+        <h2 data-translate="projects">Projects</h2>
+        <div class="project-categories">
+          <div class="category" onclick="window.location.href='directing.html'">
+            <h3>Directing</h3>
+            <p data-translate="directing">导演作品</p>
+          </div>
+          <div class="category" onclick="window.location.href='photography.html'">
+            <h3>Photography</h3>
+            <p data-translate="photography">摄影作品</p>
+          </div>
+          <div class="category" onclick="window.location.href='animation.html'">
+            <h3>Animation</h3>
+            <p data-translate="animation">动画作品</p>
+          </div>
+          <div class="category" onclick="window.location.href='editing.html'">
+            <h3>Editing</h3>
+            <p data-translate="editing">剪辑作品</p>
+          </div>
+          <div class="category" onclick="window.location.href='stories.html'">
+            <h3>Stories</h3>
+            <p data-translate="stories">个人故事</p>
+          </div>
+        </div>
+      </section>
 
-            worksGrid.innerHTML = works.map(work => `
-                <div class="work-item" style="margin: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white;">
-                    <img src="${work.imageUrl}" alt="${work.title}" style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 4px;">
-                    <div class="work-info" style="margin-bottom: 10px;">
-                        <h3 style="margin: 0 0 5px 0; color: #333;">${work.title}</h3>
-                        <p style="margin: 0; color: #666;">${work.category}</p>
-                        <p style="margin: 5px 0; color: #666;">${work.description}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
+      <section id="about" class="about-section">
+        <h2 data-translate="about">About Me</h2>
+        <div class="artist-statement" data-translate="aboutContent">
+          <!-- Contenido dinámico según idioma -->
+        </div>
+      </section>
 
-        // 加载 About 内容
-        function loadAboutContent() {
-            const aboutContent = JSON.parse(localStorage.getItem('aboutContent') || '{}');
-            const aboutSection = document.querySelector('.about-content');
-            if (aboutSection) {
-                aboutSection.innerHTML = `
-                    <div class="about-text">
-                        <p>${aboutContent.en || ''}</p>
-                        <p>${aboutContent.es || ''}</p>
-                        <p>${aboutContent.zh || ''}</p>
-                    </div>
-                `;
-            }
-        }
+      <section id="contact" class="contact-section">
+        <h2 data-translate="contact">Contact</h2>
+        <div class="contact-container">
+          <form class="contact-form">
+            <input type="text" data-translate="name" placeholder="Name" required/>
+            <input type="email" data-translate="email" placeholder="Email" required/>
+            <textarea data-translate="message" placeholder="Message" required></textarea>
+            <button type="submit" data-translate="send">Send Message</button>
+          </form>
+          <div class="social-links">
+            <a href="https://www.instagram.com/gypsojiang" class="social-link instagram" target="_blank">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/gypsojiang" class="social-link linkedin" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+          <div class="email-contact">
+            <a href="mailto:gypsojiang@gmail.com" class="email-link">
+              <i class="fas fa-envelope"></i> <span>gypsojiang@gmail.com</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-        // 初始加载
-        loadWorks();
-        loadAboutContent();
-    </script>
+  <script src="js/main.js"></script>
+  <script>
+    function loadWorks() {
+      const works = JSON.parse(localStorage.getItem('works') || '[]');
+      const worksGrid = document.querySelector('.works-grid');
+      if (!worksGrid) {
+        console.error('Works grid element not found in index.html!');
+        return;
+      }
+
+      if (works.length === 0) {
+        worksGrid.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">暂无作品</p>';
+        return;
+      }
+
+      worksGrid.innerHTML = works.map(work => `
+        <div class="work-item" style="margin: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+          <img src="${work.imageUrl}" alt="${work.title}" style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 4px;">
+          <div class="work-info" style="margin-bottom: 10px;">
+            <h3 style="margin: 0 0 5px 0; color: #333;">${work.title}</h3>
+            <p style="margin: 0; color: #666;">${work.category}</p>
+            <p style="margin: 5px 0; color: #666;">${work.description}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // No se usa directamente, pero dejo aquí la llamada para consistencia
+    function loadAboutContent() {
+      // Ya se usa `updateContent` para actualizar `aboutContent`, así que esta función queda obsoleta
+    }
+
+    // Cargar portfolio al iniciar
+    loadWorks();
+  </script>
 </body>
 </html>
