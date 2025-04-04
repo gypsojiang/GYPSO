@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Illustration Works</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <div class="illustration-page">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+        
+        <div class="illustration-hero">
+            <h1>Illustration</h1>
+            <p>Explore my illustration works</p>
+        </div>
+
+        <div class="illustration-grid">
+            <article class="illustration-item">
+                <div class="work-image">
+                    <img src="imgs/illustration1.jpg" alt="Illustration Work 1">
+                </div>
+                <div class="illustration-info">
+                    <h3>Project Title</h3>
+                    <div class="work-details">
+                        <span>2024</span>
+                        <span>Digital Art</span>
+                    </div>
+                    <p class="illustration-description">A brief description of the illustration work.</p>
+                </div>
+            </article>
+
+            <article class="illustration-item">
+                <div class="work-image">
+                    <img src="imgs/illustration2.jpg" alt="Illustration Work 2">
+                </div>
+                <div class="illustration-info">
+                    <h3>Project Title</h3>
+                    <div class="work-details">
+                        <span>2024</span>
+                        <span>Character Design</span>
+                    </div>
+                    <p class="illustration-description">A brief description of the illustration work.</p>
+                </div>
+            </article>
+
+            <article class="illustration-item">
+                <div class="work-image">
+                    <img src="imgs/illustration3.jpg" alt="Illustration Work 3">
+                </div>
+                <div class="illustration-info">
+                    <h3>Project Title</h3>
+                    <div class="work-details">
+                        <span>2024</span>
+                        <span>Concept Art</span>
+                    </div>
+                    <p class="illustration-description">A brief description of the illustration work.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        // 添加自定义鼠标效果
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.custom-cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Video Editing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span data-translate="back">返回 | Back</span>
+    </a>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo">Gypso</a>
+    </nav>
+
+    <main class="editing-page">
+        <section class="editing-hero">
+            <h1 data-translate="editing">剪辑作品 | Video Editing</h1>
+            <p class="editing-intro" data-translate="editing_intro">
+                Crafting compelling narratives through the art of editing.
+                <br>
+                通过剪辑艺术，构建引人入胜的叙事。
+            </p>
+        </section>
+
+        <section class="editing-works">
+            <div class="editing-grid">
+                <article class="editing-item">
+                    <div class="work-video">
+                        <video controls preload="metadata" playsinline>
+                            <source src="videos/RITMO_HAPPY_TOGETHER.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="editing-info">
+                        <h3>RITMO</h3>
+                        <div class="work-details">
+                            <span>2024</span>
+                            <span>Video Editing</span>
+                        </div>
+                        <p class="editing-description">A rhythmic exploration of movement and sound through video editing.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

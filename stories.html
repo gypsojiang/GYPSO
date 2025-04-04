@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Personal Stories</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span data-translate="back">返回 | Back</span>
+    </a>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-logo">Gypso</a>
+    </nav>
+
+    <main class="stories-page">
+        <section class="stories-hero">
+            <h1 data-translate="stories">个人故事 | Personal Stories</h1>
+            <p class="stories-intro" data-translate="stories_intro">
+                Sharing moments and experiences through visual storytelling.
+                <br>
+                通过视觉叙事分享时刻与经历。
+            </p>
+        </section>
+
+        <section class="stories-works">
+            <div class="stories-grid">
+                <article class="stories-item">
+                    <div class="work-video">
+                        <video controls preload="metadata" playsinline>
+                            <source src="videos/ASI SOY YO.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="stories-info">
+                        <h3>ASI SOY YO</h3>
+                        <div class="work-details">
+                            <span>2024</span>
+                            <span>Personal Story</span>
+                        </div>
+                        <p class="stories-description">A personal journey of self-discovery and expression.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
