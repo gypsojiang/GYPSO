@@ -1517,3 +1517,9 @@ section {
     border-radius: 10px;
     display: block;
 }
+.youtube-embed {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+  border: none;
+}
