@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gypso - Directing</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gypso - Directing</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-        <span data-translate="back">返回 | Back</span>
-    </a>
+  <a href="javascript:history.back()" class="back-button">
+    <i class="fas fa-arrow-left"></i>
+    <span data-translate="back">返回 | Back</span>
+  </a>
 
-    <nav class="main-nav">
-        <a href="index.html" class="nav-logo">Gypso</a>
-    </nav>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo">Gypso</a>
+  </nav>
 
-    <main class="directing-page">
-        <section class="directing-hero">
-            <h1 data-translate="directing">导演作品 | Directing Works</h1>
-            <p class="directing-intro" data-translate="directing_intro">
-                Through the lens of a director, I explore the delicate balance between visual storytelling and emotional resonance.
-                <br>
-                通过导演的视角，我探索视觉叙事与情感共鸣之间的微妙平衡。
-            </p>
-        </section>
+  <main class="directing-page">
+    <section class="directing-hero">
+      <h1 data-translate="directing">导演作品 | Directing Works</h1>
+      <p class="directing-intro" data-translate="directing_intro">
+        Through the lens of a director, I explore the delicate balance between visual storytelling and emotional resonance.<br>
+        通过导演的视角，我探索视觉叙事与情感共鸣之间的微妙平衡。
+      </p>
+    </section>
 
-        <section class="directing-works">
-            <div class="works-grid">
-                <article class="work-item">
-                    <div class="work-video">
-                        <iframe src="https://www.youtube.com/embed/lH0SnU4Y0U8?rel=0&modestbranding=1&autohide=1"
-                                title="We Are Just Nature"
-                                allowfullscreen loading="lazy"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                    </div>
-                    <div class="work-info">
-                        <h2>We Are Just Nature</h2>
-                        <div class="work-details">
-                            <span class="year">2024</span>
-                            <span class="duration">5:00</span>
-                        </div>
-                        <p class="work-description" data-translate="nature_description">
-                            A poetic exploration of humanity's connection with nature, 
-                            blending visual storytelling with environmental consciousness.
-                            <br><br>
-                            人与自然的诗意探索，通过视觉叙事展现环境意识。
-                        </p>
-                    </div>
-                </article>
+    <section class="directing-works">
+      <div class="works-grid">
+        <article class="work-item">
+          <div class="work-video">
+            <iframe class="youtube-embed"
+              src="https://www.youtube.com/embed/lH0SnU4Y0U8?rel=0&modestbranding=1&autohide=1"
+              title="We Are Just Nature"
+              allowfullscreen
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              style="width: 100%; height: 315px; border: none;">
+            </iframe>
+          </div>
+          <div class="work-info">
+            <h2>We Are Just Nature</h2>
+            <div class="work-details">
+              <span class="year">2024</span>
+              <span class="duration">5:00</span>
             </div>
-        </section>
-    </main>
+            <p class="work-description" data-translate="nature_description">
+              A poetic exploration of humanity's connection with nature, blending visual storytelling with environmental consciousness.
+              <br><br>
+              人与自然的诗意探索，通过视觉叙事展现环境意识。
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-    <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
