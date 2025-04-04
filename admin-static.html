@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <h1>Gypso Admin</h1>
+            <ul>
+                <li><a href="#images" class="active">图片管理</a></li>
+                <li><a href="#works">作品管理</a></li>
+                <li><a href="#about">About 内容</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-content">
+            <!-- 图片管理部分 -->
+            <section id="images" class="admin-section">
+                <h2>图片管理</h2>
+                <form id="imageUploadForm">
+                    <div class="form-group">
+                        <label for="imageName">图片名称</label>
+                        <input type="text" id="imageName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageFile">选择图片</label>
+                        <input type="file" id="imageFile" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit">上传图片</button>
+                </form>
+                <div class="gallery-grid"></div>
+            </section>
+
+            <!-- 作品管理部分 -->
+            <section id="works" class="admin-section" style="display: none;">
+                <h2>作品管理</h2>
+                <form id="workUploadForm">
+                    <div class="form-group">
+                        <label for="workTitle">作品标题</label>
+                        <input type="text" id="workTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="workCategory">作品类别</label>
+                        <select id="workCategory" name="category" required>
+                            <option value="editing">Editing</option>
+                            <option value="photography">Photography</option>
+                            <option value="cinematography">Cinematography</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="workImage">作品图片</label>
+                        <input type="file" id="workImage" name="image" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="workDescription">作品描述</label>
+                        <textarea id="workDescription" name="description" required></textarea>
+                    </div>
+                    <button type="submit">上传作品</button>
+                </form>
+                <div class="works-grid"></div>
+            </section>
+
+            <!-- About 内容管理部分 -->
+            <section id="about" class="admin-section" style="display: none;">
+                <h2>About 内容管理</h2>
+                <form id="aboutForm">
+                    <div class="form-group">
+                        <label for="aboutEn">英文内容</label>
+                        <textarea id="aboutEn" name="en" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutEs">西班牙语内容</label>
+                        <textarea id="aboutEs" name="es" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutZh">中文内容</label>
+                        <textarea id="aboutZh" name="zh" required></textarea>
+                    </div>
+                    <button type="submit">保存内容</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 导航菜单切换
+        document.querySelectorAll('.admin-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                // 更新活动链接
+                document.querySelectorAll('.admin-nav a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // 显示目标部分
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.style.display = section.id === targetId ? 'block' : 'none';
+                });
+
+                // 如果是作品管理部分，重新加载作品列表
+                if (targetId === 'works') {
+                    loadWorks();
+                }
+            });
+        });
+
+        // 图片压缩函数
+        function compressImage(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // 计算新的尺寸
+                        let width = img.width;
+                        let height = img.height;
+                        const maxSize = 800; // 最大尺寸
+                        
+                        if (width > height && width > maxSize) {
+                            height = Math.round((height * maxSize) / width);
+                            width = maxSize;
+                        } else if (height > maxSize) {
+                            width = Math.round((width * maxSize) / height);
+                            height = maxSize;
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        
+                        // 绘制压缩后的图片
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // 转换为base64，使用较低的质量
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        resolve(compressedDataUrl);
+                    };
+                    img.onerror = reject;
+                };
+                reader.onerror = reject;
+            });
+        }
+
+        // 图片预览功能
+        document.getElementById('imageFile').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                try {
+                    const compressedDataUrl = await compressImage(file);
+                    const preview = document.createElement('img');
+                    preview.src = compressedDataUrl;
+                    preview.style.maxWidth = '200px';
+                    preview.style.marginTop = '10px';
+                    
+                    // 移除旧的预览
+                    const oldPreview = this.parentElement.querySelector('img');
+                    if (oldPreview) {
+                        oldPreview.remove();
+                    }
+                    
+                    this.parentElement.appendChild(preview);
+                } catch (error) {
+                    console.error('Error compressing image:', error);
+                    alert('图片处理失败，请重试');
+                }
+            }
+        });
+
+        // 作品图片预览功能
+        document.getElementById('workImage').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                try {
+                    const compressedDataUrl = await compressImage(file);
+                    const preview = document.createElement('img');
+                    preview.src = compressedDataUrl;
+                    preview.style.maxWidth = '200px';
+                    preview.style.marginTop = '10px';
+                    
+                    // 移除旧的预览
+                    const oldPreview = this.parentElement.querySelector('img');
+                    if (oldPreview) {
+                        oldPreview.remove();
+                    }
+                    
+                    this.parentElement.appendChild(preview);
+                } catch (error) {
+                    console.error('Error compressing image:', error);
+                    alert('图片处理失败，请重试');
+                }
+            }
+        });
+
+        // 图片上传处理
+        document.getElementById('imageUploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('imageFile');
+            const nameInput = document.getElementById('imageName');
+            
+            if (fileInput.files.length === 0) {
+                alert('请选择要上传的图片');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            if (!file.type.startsWith('image/')) {
+                alert('请选择有效的图片文件');
+                return;
+            }
+
+            try {
+                const compressedDataUrl = await compressImage(file);
+                const image = {
+                    id: Date.now().toString(),
+                    name: nameInput.value || file.name,
+                    url: compressedDataUrl
+                };
+                
+                // 保存到 localStorage 而不是 sessionStorage
+                const images = JSON.parse(localStorage.getItem('images') || '[]');
+                images.push(image);
+                localStorage.setItem('images', JSON.stringify(images));
+                
+                // 更新显示
+                loadImages();
+                
+                // 重置表单
+                e.target.reset();
+                
+                alert('图片上传成功！');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('上传失败，请重试');
+            }
+        });
+
+        // 加载图片列表
+        function loadImages() {
+            const images = JSON.parse(localStorage.getItem('images') || '[]');
+            const galleryGrid = document.querySelector('.gallery-grid');
+            galleryGrid.innerHTML = images.map(image => `
+                <div class="gallery-item">
+                    <img src="${image.url}" alt="${image.name}">
+                    <div class="actions">
+                        <button onclick="deleteImage('${image.id}')">删除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 加载作品列表
+        function loadWorks() {
+            const works = JSON.parse(localStorage.getItem('works') || '[]');
+            console.log('Loading works:', works); // 添加调试日志
+            
+            const worksGrid = document.querySelector('.works-grid');
+            if (!worksGrid) {
+                console.error('Works grid element not found!');
+                return;
+            }
+
+            if (works.length === 0) {
+                worksGrid.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">暂无作品</p>';
+                return;
+            }
+
+            worksGrid.innerHTML = works.map(work => `
+                <div class="work-item" style="margin: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white;">
+                    <img src="${work.imageUrl}" alt="${work.title}" style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 4px;">
+                    <div class="work-info" style="margin-bottom: 10px;">
+                        <h3 style="margin: 0 0 5px 0; color: #333;">${work.title}</h3>
+                        <p style="margin: 0; color: #666;">${work.category}</p>
+                        <p style="margin: 5px 0; color: #666;">${work.description}</p>
+                    </div>
+                    <div class="actions" style="display: flex; gap: 10px;">
+                        <button onclick="editWork('${work.id}')" class="edit-btn" style="padding: 5px 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">编辑</button>
+                        <button onclick="deleteWork('${work.id}')" class="delete-btn" style="padding: 5px 10px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">删除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 删除图片
+        window.deleteImage = function(imageId) {
+            if (!confirm('确定要删除这张图片吗？')) return;
+            
+            const images = JSON.parse(localStorage.getItem('images') || '[]');
+            const newImages = images.filter(img => img.id !== imageId);
+            localStorage.setItem('images', JSON.stringify(newImages));
+            loadImages();
+        };
+
+        // 删除作品
+        window.deleteWork = function(workId) {
+            if (!confirm('确定要删除这个作品吗？')) return;
+            
+            const works = JSON.parse(localStorage.getItem('works') || '[]');
+            const newWorks = works.filter(w => w.id !== workId);
+            localStorage.setItem('works', JSON.stringify(newWorks));
+            loadWorks();
+        };
+
+        // 编辑作品
+        window.editWork = function(workId) {
+            const works = JSON.parse(localStorage.getItem('works') || '[]');
+            const work = works.find(w => w.id === workId);
+            
+            if (work) {
+                document.getElementById('workTitle').value = work.title;
+                document.getElementById('workCategory').value = work.category;
+                document.getElementById('workDescription').value = work.description;
+                
+                const newWorks = works.filter(w => w.id !== workId);
+                localStorage.setItem('works', JSON.stringify(newWorks));
+                loadWorks();
+            }
+        };
+
+        // 加载 About 内容
+        const aboutContent = JSON.parse(localStorage.getItem('aboutContent') || '{}');
+        document.getElementById('aboutEn').value = aboutContent.en || '';
+        document.getElementById('aboutEs').value = aboutContent.es || '';
+        document.getElementById('aboutZh').value = aboutContent.zh || '';
+
+        // About 内容处理
+        document.getElementById('aboutForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const aboutContent = {
+                en: document.getElementById('aboutEn').value,
+                es: document.getElementById('aboutEs').value,
+                zh: document.getElementById('aboutZh').value
+            };
+            
+            localStorage.setItem('aboutContent', JSON.stringify(aboutContent));
+            alert('About 内容已保存！');
+        });
+
+        // 作品上传处理
+        document.getElementById('workUploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('workImage');
+            const titleInput = document.getElementById('workTitle');
+            const categoryInput = document.getElementById('workCategory');
+            const descriptionInput = document.getElementById('workDescription');
+            
+            if (fileInput.files.length === 0) {
+                alert('请选择要上传的作品图片');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            if (!file.type.startsWith('image/')) {
+                alert('请选择有效的图片文件');
+                return;
+            }
+
+            if (!titleInput.value.trim()) {
+                alert('请输入作品标题');
+                return;
+            }
+
+            if (!descriptionInput.value.trim()) {
+                alert('请输入作品描述');
+                return;
+            }
+            
+            try {
+                const compressedDataUrl = await compressImage(file);
+                const work = {
+                    id: Date.now().toString(),
+                    title: titleInput.value.trim(),
+                    category: categoryInput.value,
+                    description: descriptionInput.value.trim(),
+                    imageUrl: compressedDataUrl
+                };
+                
+                console.log('Saving work:', work); // 添加调试日志
+                
+                // 保存到 localStorage 而不是 sessionStorage
+                const works = JSON.parse(localStorage.getItem('works') || '[]');
+                works.push(work);
+                localStorage.setItem('works', JSON.stringify(works));
+                
+                console.log('Works saved to localStorage:', works); // 添加调试日志
+                
+                // 更新显示
+                loadWorks();
+                
+                // 重置表单
+                e.target.reset();
+                
+                alert('作品上传成功！');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('上传失败，请重试');
+            }
+        });
+
+        // 初始加载
+        loadImages();
+        loadWorks();
+    </script>
+</body>
+</html> 

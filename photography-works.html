@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Photography Works</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <div class="animation-page">
+        <a href="photography.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+        
+        <div class="animation-hero">
+            <h1>Photography</h1>
+            <p>Explore my photographic works</p>
+        </div>
+
+        <div class="illustration-grid">
+            <article class="illustration-item" onclick="toggleGallery()">
+                <div class="work-image">
+                    <img src="images/1 copy.png" alt="PETALS IN THE RAIN - Photo 1">
+                </div>
+                <div class="illustration-info">
+                    <h3>PETALS IN THE RAIN</h3>
+                    <div class="work-details">
+                        <span>2024</span>
+                        <span>Photography Series</span>
+                    </div>
+                    <p class="illustration-description">A photographic series exploring the beauty of nature in motion.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div id="gallery" class="gallery" style="display: none;">
+        <div class="gallery-content">
+            <img src="images/1 copy.png" alt="PETALS IN THE RAIN - Photo 1">
+            <img src="images/2 copy.png" alt="PETALS IN THE RAIN - Photo 2">
+            <img src="images/3.png" alt="PETALS IN THE RAIN - Photo 3">
+            <button onclick="toggleGallery()" class="close-button">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleGallery() {
+            const gallery = document.getElementById('gallery');
+            if (gallery.style.display === 'none') {
+                gallery.style.display = 'flex';
+            } else {
+                gallery.style.display = 'none';
+            }
+        }
+
+        // 添加自定义鼠标效果
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.custom-cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gypso - Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <h1>Gypso Admin Panel</h1>
+            <ul>
+                <li><a href="#images" class="active">Images</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-content">
+            <section id="images" class="admin-section">
+                <h2>Manage Images</h2>
+                <div class="image-upload">
+                    <h3>Upload New Image</h3>
+                    <form id="imageUploadForm">
+                        <div class="form-group">
+                            <label for="imageName">Image Name:</label>
+                            <input type="text" id="imageName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageFile">Select Image:</label>
+                            <input type="file" id="imageFile" accept="image/*" required>
+                        </div>
+                        <button type="submit">Upload</button>
+                    </form>
+                </div>
+
+                <div class="image-gallery">
+                    <h3>Current Images</h3>
+                    <div class="gallery-grid" id="imageGrid">
+                        <!-- Images will be loaded here dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="works" class="admin-section">
+                <h2>Manage Works</h2>
+                <div class="work-upload">
+                    <h3>Add New Work</h3>
+                    <form id="workUploadForm">
+                        <div class="form-group">
+                            <label for="workTitle">Title:</label>
+                            <input type="text" id="workTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="workCategory">Category:</label>
+                            <select id="workCategory" required>
+                                <option value="directing">Directing</option>
+                                <option value="photography">Photography</option>
+                                <option value="animation">Animation</option>
+                                <option value="editing">Editing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="workFile">Video/Image File:</label>
+                            <input type="file" id="workFile" accept="video/*,image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="workDescription">Description:</label>
+                            <textarea id="workDescription" required></textarea>
+                        </div>
+                        <button type="submit">Add Work</button>
+                    </form>
+                </div>
+
+                <div class="works-list">
+                    <h3>Current Works</h3>
+                    <div class="works-grid" id="worksGrid">
+                        <!-- Works will be loaded here dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="admin-section">
+                <h2>Edit About Content</h2>
+                <form id="aboutForm">
+                    <div class="form-group">
+                        <label for="aboutContent">About Content:</label>
+                        <textarea id="aboutContent" rows="10" required></textarea>
+                    </div>
+                    <button type="submit">Save Changes</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html> 
