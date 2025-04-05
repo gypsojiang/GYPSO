@@ -32,7 +32,13 @@ const translations = {
         editing: "Edición de Video",
         stories: "Historias Personales",
         about: "Sobre Mí",
-        aboutContent: `¡Hola! Mucha gente me conoce como Gypso...`, // Recorta o ajusta tu contenido largo aquí
+        aboutContent: `Many people know me by my artistic name Gypso, a girl in love with cinema and art, with a unique story intertwined with my childhood and culture. I grew up surrounded by the love and patience of my grandparents, which has given me a special calmness to face any project with serenity. Since I was little, when I arrived in Spain, an unknown country for me, movies became my best companions. Through the screen, I discovered a world full of emotions, cultures, and landscapes that made me feel safer and more inspired to explore other realities. Directors like Wong Kar-Wai and Ozu were my guides in this cinematic journey.
+
+Today, I am studying at a film school, taking small steps towards my dream of telling stories that connect people and make us reflect. My Chinese roots, which contrast so much with European culture in aspects such as painting, architecture, and ways of thinking, have enriched my artistic perspective. I love exploring these differences and finding common points that bring us closer.
+
+Respect and independence are values that define me both in my daily life and in my work. But it's not all seriousness: I like to face each project with a spark of fun and creativity, letting my manual skills capture unique moments.
+
+My goal is to use my passion and skills to give voice to those who need it most. I know that art and cinema have the power to do so.`,
         contact: "Contacto",
         name: "Nombre",
         email: "Correo",
@@ -55,8 +61,13 @@ const translations = {
         editing: "剪辑作品",
         stories: "个人故事",
         about: "关于我",
-        aboutContent: `大家好！很多人通过我的艺名Gypso认识我...`, // Recorta o ajusta tu contenido largo aquí
-        contact: "联系方式",
+        aboutContent: `大家好！很多人通过我的艺名Gypso认识我，一个热爱电影和艺术的女孩，我的故事与我的童年和文化交织在一起。我在外公外婆的关爱和耐心下长大，这给了我一种特殊的平静，让我能够以平和的心态面对任何项目。从小时候来到西班牙这个陌生的国家开始，电影就成了我最好的伙伴。通过银幕，我发现了一个充满情感、文化和风景的世界，这让我感到更安全，也更有动力去探索其他现实。王家卫和小津安二郎等导演是我电影之旅的引路人。
+
+如今，我正在电影学院学习，朝着讲述能连接人心、引发思考的故事的梦想迈出小步。我的中国根源，在绘画、建筑和思维方式等方面与欧洲文化形成鲜明对比，这丰富了我的艺术视角。我喜欢探索这些差异，寻找能让我们更亲近的共同点。
+
+尊重和独立是我在日常生活和工作中都秉持的价值观。但并非一切都是严肃的：我喜欢带着趣味和创造力的火花面对每个项目，让我的手艺捕捉独特的瞬间。
+
+我的目标是用我的热情和技能为最需要发声的人发声。我相信艺术和电影有这样的力量。`,contact: "联系方式",
         name: "姓名",
         email: "邮箱",
         message: "留言",
