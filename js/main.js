@@ -9,7 +9,13 @@ const translations = {
         editing: "Video Editing",
         stories: "Personal Stories",
         about: "About Me",
-        aboutContent: `Many people know me by my artistic name Gypso...`, // Recorta o ajusta tu contenido largo aquí
+        aboutContent: `Many people know me by my artistic name Gypso, a girl in love with cinema and art, with a unique story intertwined with my childhood and culture. I grew up surrounded by the love and patience of my grandparents, which has given me a special calmness to face any project with serenity. Since I was little, when I arrived in Spain, an unknown country for me, movies became my best companions. Through the screen, I discovered a world full of emotions, cultures, and landscapes that made me feel safer and more inspired to explore other realities. Directors like Wong Kar-Wai and Ozu were my guides in this cinematic journey.
+
+Today, I am studying at a film school, taking small steps towards my dream of telling stories that connect people and make us reflect. My Chinese roots, which contrast so much with European culture in aspects such as painting, architecture, and ways of thinking, have enriched my artistic perspective. I love exploring these differences and finding common points that bring us closer.
+
+Respect and independence are values that define me both in my daily life and in my work. But it's not all seriousness: I like to face each project with a spark of fun and creativity, letting my manual skills capture unique moments.
+
+My goal is to use my passion and skills to give voice to those who need it most. I know that art and cinema have the power to do so.`,
         contact: "Contact",
         name: "Name",
         email: "Email",
@@ -32,13 +38,14 @@ const translations = {
         editing: "Edición de Video",
         stories: "Historias Personales",
         about: "Sobre Mí",
-        aboutContent: `Many people know me by my artistic name Gypso, a girl in love with cinema and art, with a unique story intertwined with my childhood and culture. I grew up surrounded by the love and patience of my grandparents, which has given me a special calmness to face any project with serenity. Since I was little, when I arrived in Spain, an unknown country for me, movies became my best companions. Through the screen, I discovered a world full of emotions, cultures, and landscapes that made me feel safer and more inspired to explore other realities. Directors like Wong Kar-Wai and Ozu were my guides in this cinematic journey.
+        aboutContent: `¡Hola! Mucha gente me conocen por mi nombre artístico Gypso, una chica enamorada del cine y del arte, con una historia única que se entrelaza con mi infancia y mi cultura. Crecí rodeada del cariño y la paciencia de mis abuelos, lo que me ha dado una calma especial para enfrentar cualquier proyecto con serenidad. Desde pequeña, cuando llegué a España, un país desconocido para mí, las películas se convirtieron en mis mejores compañeras. A través de la pantalla, descubrí un mundo lleno de emociones, las culturas y paisajes que me hicieron sentir más segura e inspirada para conocer otras realidades. Directores como Wong Kar-Wai y Ozu fueron mis guías en este viaje cinematográfico.
 
-Today, I am studying at a film school, taking small steps towards my dream of telling stories that connect people and make us reflect. My Chinese roots, which contrast so much with European culture in aspects such as painting, architecture, and ways of thinking, have enriched my artistic perspective. I love exploring these differences and finding common points that bring us closer.
+Hoy en día, estoy estudiando en una escuela de cine, dando pasos pequeños hacia mi sueño de contar historias que conecten a las personas y nos hagan reflexionar. Mis raíces chinas, que contrastan tanto con la cultura europea en aspectos como la pintura, la arquitectura y la forma de pensar, han enriquecido mi perspectiva artística. Me encanta explorar esas diferencias y buscar puntos en común que nos acerquen.
 
-Respect and independence are values that define me both in my daily life and in my work. But it's not all seriousness: I like to face each project with a spark of fun and creativity, letting my manual skills capture unique moments.
+El respeto y la independencia, valores que me definen tanto en mi vida diaria como en mi trabajo. Pero no todo es seriedad: me gusta enfrentar cada proyecto con una chispa de diversión y creatividad, dejando que mis habilidades manuales capturen momentos únicos.
 
-My goal is to use my passion and skills to give voice to those who need it most. I know that art and cinema have the power to do so.`,
+Mi objetivo es utilizar mi pasión y habilidades para dar voz a quienes más lo necesitan. Sé que el arte y el cine tienen el poder de hacerlo.`,
+        
         contact: "Contacto",
         name: "Nombre",
         email: "Correo",
